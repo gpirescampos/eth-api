@@ -11,11 +11,11 @@ function iThrowError(instance) {
 
 contract('Controller', async () => {
   it("Init Controller", async () => {
-    const contractC = await Controller.new()
+    const contractC = await Controller.new("HelloWorld")
     assert.equal(contractC.address.length, 42)
   })
   it("Controller POST", async () => {
-    const contractC = await Controller.new()
+    const contractC = await Controller.new("HelloWorld")
     await contractC.POST("HelloWorld")
     const objAddress = await contractC.objects(0)
     const contractO = await Obj.at(objAddress)
@@ -23,7 +23,7 @@ contract('Controller', async () => {
     assert.equal(obj, "HelloWorld")
   })
   it("Controller PUT", async () => {
-    const contractC = await Controller.new()
+    const contractC = await Controller.new("HelloWorld")
     await contractC.POST("HelloWorld")
     const objAddress = await contractC.objects(0)
     await contractC.PUT(objAddress, "Hello")
@@ -32,7 +32,7 @@ contract('Controller', async () => {
     assert.equal(obj, "Hello")
   })
   it("Controller GET", async () => {
-    const contractC = await Controller.new()
+    const contractC = await Controller.new("HelloWorld")
     await contractC.POST("HelloWorld")
     const objAddress = await contractC.objects(0)
     const cObj = await contractC.GET(objAddress)

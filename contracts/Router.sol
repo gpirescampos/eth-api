@@ -11,7 +11,7 @@ contract Router {
   }
 
   function addController(string _controllerName) public {
-    controller[_controllerName] = new Controller();
+    controller[_controllerName] = new Controller(_controllerName);
     controllers.push(_controllerName);
     controllersCount++;
   }
@@ -21,11 +21,15 @@ contract Router {
     controllersCount--;
   }
 
+  function getController(string _controllerName) public view returns (address) {
+    return controller[_controllerName];
+  }
+
   function getNumberOfObjects(string _controller) public view returns (int) {
     return Controller(controller[_controller]).objCount();
   }
 
-  function getObjects(string _controller, uint _objNumber) public view returns (address) {
+  function getObject(string _controller, uint _objNumber) public view returns (address) {
     return Controller(controller[_controller]).objects(_objNumber);
   }
 

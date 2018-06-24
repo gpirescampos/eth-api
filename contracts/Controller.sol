@@ -5,9 +5,10 @@ import "./Object.sol";
 contract Controller {
   address[] public objects;
   int public objCount = 0;
+  string public controllerName;
 
-  constructor() public {
-    
+  constructor(string _name) public {
+    controllerName = _name;
   }
 
   function POST(string _params) public {
