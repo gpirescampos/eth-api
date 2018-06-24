@@ -46,6 +46,6 @@ A Router Smart Contract is used to store controllers, and direct calls to them. 
 - Router/Controller/Object/POST
   - Router.POST(string _controller_, string _params_)
 - Router/Controller/Object/PUT
-  - Router.POST(string _controller_, address _obj, string _params_)
+  - Router.POST(string _controller_, address _obj_, string _params_)
 - Router/Controller/Object/DELETE
   - Router.POST(string _controller_, address _obj_)
