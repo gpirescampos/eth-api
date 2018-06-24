@@ -34,18 +34,18 @@ A Router Smart Contract is used to store controllers, and direct calls to them. 
    - Router is created
 2. Call Router.addController(_ControllerName_)
    - Controller is created
-3. Call Router.POST(_controllerName, _params_)
+3. Call Router.POST(_controllerName_, _params_)
    - Object is created
 
 **Calling the API**
 > In order to know the Controller and the Object:
 >  - Controller: Router.controllers(_index_)
->  - Object: Router.getObject(_controllerName, _index_)
+>  - Object: Router.getObject(_controllerName_, _index_)
 - Router/Controller/Object/GET
-  - Router.GET(string _controller, address _obj_)
+  - Router.GET(string _controller_, address _obj_)
 - Router/Controller/Object/POST
-  - Router.POST(string _controller, string _params_)
+  - Router.POST(string _controller_, string _params_)
 - Router/Controller/Object/PUT
-  - Router.POST(string _controller, address _obj, string _params_)
+  - Router.POST(string _controller_, address _obj, string _params_)
 - Router/Controller/Object/DELETE
-  - Router.POST(string _controller, address _obj_)
+  - Router.POST(string _controller_, address _obj_)
