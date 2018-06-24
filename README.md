@@ -12,18 +12,21 @@ A Router Smart Contract is used to store Controllers, and direct calls to them. 
 **Object** 
 ```
 Each Object has all the atomic methods expected on an API: POST, GET, PUT, DELETE
+
 Objects are limited to a single string
 ```
 
 **Controller**
 ```
 Each Controller abstracts the Object atomic methods
+
 Controllers store high level information about created Objects: address, and number of Objects
 ```
 
 **Router**
 ```
 Each Router abstracts the Controller methods
+
 Routers store high level information about created Controllers: name, address, and number of Controllers
 ```
 
