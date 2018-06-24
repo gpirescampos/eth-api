@@ -1,5 +1,8 @@
-var Router = artifacts.require("./Router.sol");
+var Obj = artifacts.require("./Object.sol");
+var Helpers = artifacts.require("./Helpers.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Router);
+  // deployer.deploy(Helpers);
+  // deployer.link(Helpers, Obj);
+  deployer.deploy(Obj, "HelloWorld");
 };
