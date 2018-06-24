@@ -32,20 +32,20 @@ A Router Smart Contract is used to store controllers, and direct calls to them. 
 **Deployment and initialization**
 1. Deploye Router.sol
    - Router is created
-2. Call Router.addController(_ControllerName)
+2. Call Router.addController(_ControllerName_)
    - Controller is created
-3. Call Router.POST(_controllerName, _params)
+3. Call Router.POST(_controllerName, _params_)
    - Object is created
 
 **Calling the API**
 > In order to know the Controller and the Object:
->  - Controller: Router.controllers(_index)
->  - Object: Router.getObject(_controllerName, _index)
+>  - Controller: Router.controllers(_index_)
+>  - Object: Router.getObject(_controllerName, _index_)
 - Router/Controller/Object/GET
-  - Router.GET(string _controller, address _obj)
+  - Router.GET(string _controller, address _obj_)
 - Router/Controller/Object/POST
-  - Router.POST(string _controller, string _params)
+  - Router.POST(string _controller, string _params_)
 - Router/Controller/Object/PUT
-  - Router.POST(string _controller, address _obj, string _params)
+  - Router.POST(string _controller, address _obj, string _params_)
 - Router/Controller/Object/DELETE
-  - Router.POST(string _controller, address _obj)
+  - Router.POST(string _controller, address _obj_)
