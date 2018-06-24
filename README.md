@@ -52,3 +52,8 @@ Routers store high level information about created Controllers: name, address, a
   - Router.POST(string _controller_, address _obj_, string _params_)
 - Router/Controller/Object/DELETE
   - Router.POST(string _controller_, address _obj_)
+  
+**Test**
+```
+truffle test
+```
