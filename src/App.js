@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
-import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
+import ControllerContract from '../build/contracts/Controller.json'
+import ObjectContract from '../build/contracts/Object.json'
+import RouterContract from '../build/contracts/Router.json'
 import getWeb3 from './utils/getWeb3'
 
 import './css/oswald.css'
 import './css/open-sans.css'
-import './css/pure-min.css'
+import './css/bootstrap/bootstrap.css'
 import './App.css'
 
 class App extends Component {
   constructor(props) {
     super(props)
-
+    this.handleChange = this.handleChange.bind(this);
+    this.addController = this.addController.bind(this);
     this.state = {
-      storageValue: 0,
-      web3: null
+      endpointList: [],
+      web3: null,
+      value: '',
+      account: null
     }
   }
 
@@ -26,7 +31,11 @@ class App extends Component {
       this.setState({
         web3: results.web3
       })
-
+      this.state.web3.eth.getAccounts((error, accounts) => {
+        return this.setState({
+          account: accounts[0]
+        })
+      })
       // Instantiate contract once web3 provided.
       this.instantiateContract()
     })
@@ -34,59 +43,67 @@ class App extends Component {
       console.log('Error finding web3.')
     })
   }
-
-  instantiateContract() {
-    /*
-     * SMART CONTRACT EXAMPLE
-     *
-     * Normally these functions would be called in the context of a
-     * state management library, but for convenience I've placed them here.
-     */
-
+  
+  async addController() {
     const contract = require('truffle-contract')
-    const simpleStorage = contract(SimpleStorageContract)
-    simpleStorage.setProvider(this.state.web3.currentProvider)
+    const routerContract = contract(RouterContract)
+    routerContract.setProvider(this.state.web3.currentProvider)
 
-    // Declaring this for later so we can chain functions on SimpleStorage.
-    var simpleStorageInstance
+    const routerInstance = await routerContract.deployed()
+    console.log(routerInstance)
+    await routerInstance.addController(this.state.value.toString(), {from: this.state.account, gas:5000000})
+    window.location.reload();
+  }
 
-    // Get accounts.
-    this.state.web3.eth.getAccounts((error, accounts) => {
-      simpleStorage.deployed().then((instance) => {
-        simpleStorageInstance = instance
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
 
-        // Stores a given value, 5 by default.
-        return simpleStorageInstance.set(5, {from: accounts[0]})
-      }).then((result) => {
-        // Get the value from the contract to prove it worked.
-        return simpleStorageInstance.get.call(accounts[0])
-      }).then((result) => {
-        // Update state with the result.
-        return this.setState({ storageValue: result.c[0] })
-      })
+  async instantiateContract() {
+    const contract = require('truffle-contract')
+    const routerContract = contract(RouterContract)
+    routerContract.setProvider(this.state.web3.currentProvider)
+
+    const routerInstance = await routerContract.deployed()
+    const controllersCount = await routerInstance.controllersCount.call()
+
+    const tempArray = []
+    if (controllersCount.toNumber() > 0) {
+      for (let index = 0; index < controllersCount.toNumber(); index++) {
+        tempArray.push(await routerInstance.controllers(index))
+      }
+    }
+    return this.setState({
+      endpointList: tempArray
     })
   }
 
   render() {
     return (
-      <div className="App">
-        <nav className="navbar pure-menu pure-menu-horizontal">
-            <a href="#" className="pure-menu-heading pure-menu-link">eth-api</a>
-        </nav>
-
         <main className="container">
-          <div className="pure-g">
-            <div className="pure-u-1-1">
-              <h1>Good to Go!</h1>
-              <p>Your Truffle Box is installed and ready.</p>
-              <h2>Smart Contract Example</h2>
-              <p>If your contracts compiled and migrated successfully, below will show a stored value of 5 (by default).</p>
-              <p>Try changing the value stored on <strong>line 59</strong> of App.js.</p>
-              <p>The stored value is: {this.state.storageValue}</p>
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <h1>Solidity API</h1>
+                <h2>Simulating a simple routing scheme with Ethereum smart contracts</h2>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <p>Number of controllers: {this.state.endpointList.length}</p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">   
+                <form className="form-inline" onSubmit={this.addController}>
+                  <input className="form-control" type="text" value={this.state.value} onChange={this.handleChange} />
+                  &nbsp;
+                  <button className="btn btn-primary btn-sm" type="submit">Add controller</button>
+                </form>
+              </div>
             </div>
           </div>
         </main>
-      </div>
     );
   }
 }

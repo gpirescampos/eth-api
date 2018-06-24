@@ -4700,7 +4700,7 @@
         "Helpers": "0x1411cb266fced1587b0aa29e9d5a9ef3db64a9c5"
       },
       "address": "0x345ca3e014aaf5dca488057592ee47305d9b3e10",
-      "transactionHash": "0x8b74ee6f7724ba2bbf7d2406ba41a4f5a8deccfae4e4d22c6523467d04d54383"
+      "transactionHash": "0xf28e2b81596553886b14a4b13089d61467c8c7afb91acd02550a934a410170d3"
     },
     "1529862160156": {
       "events": {},
@@ -4710,5 +4710,5 @@
     }
   },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-06-24T17:43:06.395Z"
+  "updatedAt": "2018-06-24T21:05:12.423Z"
 }
