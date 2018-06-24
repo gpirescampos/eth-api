@@ -2,30 +2,6 @@ pragma experimental ABIEncoderV2;
 
 import "./Object.sol";
 
-// contract Router {
-//   mapping (string => address) controller;
-
-//   constructor() public {
-//   }
-
-//   function addController(string _controllerName) public {
-//     controller[_controllerName] = new Controller();
-//   }
-
-//   function removeController(string _controllerName) public {
-//     controller[_controllerName] = address(0);
-//   }
-
-//   function checkController(string _controllerName) public view returns (address) {
-//     return controller[_controllerName];
-//   }
-
-//   function callController(string _controller, address _object, string _method, string _params) public view returns (string) {
-//     return Controller(controller[_controller]).callMethod(_object, _method, _params);
-//   }
-
-// }
-
 contract Controller {
   address[] public objects;
   int public objCount = 0;

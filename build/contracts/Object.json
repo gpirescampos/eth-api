@@ -348,7 +348,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 128,
+                          "referencedDeclaration": 293,
                           "src": "325:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -381,7 +381,7 @@
                       "name": "selfdestruct",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 136,
+                      "referencedDeclaration": 301,
                       "src": "312:12:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_selfdestruct_nonpayable$_t_address_$returns$__$",
@@ -734,7 +734,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 128,
+                          "referencedDeclaration": 293,
                           "src": "325:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -767,7 +767,7 @@
                       "name": "selfdestruct",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 136,
+                      "referencedDeclaration": 301,
                       "src": "312:12:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_selfdestruct_nonpayable$_t_address_$returns$__$",
@@ -841,5 +841,5 @@
     }
   },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-06-24T15:31:51.463Z"
+  "updatedAt": "2018-06-24T16:42:13.889Z"
 }
